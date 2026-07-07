@@ -1,0 +1,6 @@
+{
+  "name": "mansu-library-aladin-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "만수여자중학교 하늘정원 도서관 - 알라딘 도서 검색 프록시 서버"
+}
