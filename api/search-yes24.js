@@ -18,11 +18,19 @@ module.exports = async (req, res) => {
     return;
   }
 
+  const sortAllowed = ['DEFAULT', 'RELATION'];
+  const categoryAllowed = ['BOOK', 'FOREIGN'];
+  const sort = sortAllowed.includes(req.query.sort) ? req.query.sort : 'DEFAULT';
+  const category = categoryAllowed.includes(req.query.category) ? req.query.category : 'BOOK';
+  let page = parseInt(req.query.page, 10);
+  if (!page || page < 1) page = 1;
+  if (page > 30) page = 30;
+
   const url = 'https://apis.yes24.com/v1/goods/itemList'
     + '?query=' + encodeURIComponent(q)
-    + '&category=BOOK'
-    + '&sort=DEFAULT'
-    + '&page=1'
+    + '&category=' + category
+    + '&sort=' + sort
+    + '&page=' + page
     + '&pageSize=10';
 
   try {
